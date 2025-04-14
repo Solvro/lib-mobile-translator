@@ -1,10 +1,10 @@
 name: solvro_translator
-publish_to: none
-environment:
-  sdk: ^3.7.0
-workspace:
+
+packages:
   - packages/solvro_translatable
   - packages/solvro_translatable_generator
   - packages/solvro_translator_with_drift_cache
-dev_dependencies:
-  melos: ^6.3.2
+
+scripts:
+  generate:
+    run: melos exec -c 1 --depends-on build_runner -- dart run build_runner build
