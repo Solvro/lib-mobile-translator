@@ -1,0 +1,8 @@
+builders:
+  solvro_translator_generator:
+    import: "package:solvro_translator_generator/solvro_translator_generator.dart"
+    build_extensions: { ".dart": [".translatable.g.dart"] }
+    builder_factories: ["translatableBuilder"]
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]

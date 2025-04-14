@@ -1,3 +1,7 @@
+## 0.2.3
+
+- config fix
+
 ## 0.2.2
 
 - bump `solvro_translator_core`
