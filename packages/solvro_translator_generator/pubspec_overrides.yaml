@@ -1,5 +1,0 @@
-# melos_managed_dependency_overrides: solvro_translator_core
-# The following override is causing Melos bootstrap to fail
-# dependency_overrides:
-#   solvro_translator_core:
-#     path: ../solvro_translator_core
