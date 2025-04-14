@@ -18,7 +18,7 @@ class MyRemoteTranslation implements TranslationResults {
 // Implement local manager
 class MyLocalManager implements LocalTranslatableManager<MyLocalTranslation, MyRemoteTranslation> {
   @override
-  Future<MyLocalTranslation?> getTranslation(int hash, SolvroLocale locale) async {
+  Future<MyLocalTranslation?> getTranslation(String md5Hash, SolvroLocale locale) async {
     // Mock implementation - in real usage, fetch from local storage
     return MyLocalTranslation("Cached: $hash", DateTime.now());
   }

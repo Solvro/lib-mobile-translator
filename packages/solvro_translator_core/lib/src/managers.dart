@@ -29,7 +29,7 @@ abstract class LocalTranslatableManager<Local extends TranslationResults, Remote
   /// Retrieves a translation from local storage based on [hash] and [locale].
   ///
   /// Returns a Future containing the translation results if found, otherwise null.
-  Future<Local?> getTranslation(int hash, SolvroLocale locale);
+  Future<Local?> getTranslation(String md5Hash, SolvroLocale locale);
 
   /// Saves a remote translation to local storage.
   ///

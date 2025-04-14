@@ -23,7 +23,7 @@ RemoteTranslationResponse _$RemoteTranslationResponseFromJson(
 /// @nodoc
 mixin _$RemoteTranslationResponse {
 
- String get hash; String get originalText; String get translatedText; String get originalLanguageCode; String get translatedLanguageCode; bool get isApproved; DateTime get createdAt; DateTime get updatedAt;
+ String get originalText; String get translatedText; String get originalLanguageCode; String get translatedLanguageCode; bool get isApproved; DateTime get createdAt; DateTime get updatedAt;
 /// Create a copy of RemoteTranslationResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -36,16 +36,16 @@ $RemoteTranslationResponseCopyWith<RemoteTranslationResponse> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteTranslationResponse&&(identical(other.hash, hash) || other.hash == hash)&&(identical(other.originalText, originalText) || other.originalText == originalText)&&(identical(other.translatedText, translatedText) || other.translatedText == translatedText)&&(identical(other.originalLanguageCode, originalLanguageCode) || other.originalLanguageCode == originalLanguageCode)&&(identical(other.translatedLanguageCode, translatedLanguageCode) || other.translatedLanguageCode == translatedLanguageCode)&&(identical(other.isApproved, isApproved) || other.isApproved == isApproved)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteTranslationResponse&&(identical(other.originalText, originalText) || other.originalText == originalText)&&(identical(other.translatedText, translatedText) || other.translatedText == translatedText)&&(identical(other.originalLanguageCode, originalLanguageCode) || other.originalLanguageCode == originalLanguageCode)&&(identical(other.translatedLanguageCode, translatedLanguageCode) || other.translatedLanguageCode == translatedLanguageCode)&&(identical(other.isApproved, isApproved) || other.isApproved == isApproved)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,hash,originalText,translatedText,originalLanguageCode,translatedLanguageCode,isApproved,createdAt,updatedAt);
+int get hashCode => Object.hash(runtimeType,originalText,translatedText,originalLanguageCode,translatedLanguageCode,isApproved,createdAt,updatedAt);
 
 @override
 String toString() {
-  return 'RemoteTranslationResponse(hash: $hash, originalText: $originalText, translatedText: $translatedText, originalLanguageCode: $originalLanguageCode, translatedLanguageCode: $translatedLanguageCode, isApproved: $isApproved, createdAt: $createdAt, updatedAt: $updatedAt)';
+  return 'RemoteTranslationResponse(originalText: $originalText, translatedText: $translatedText, originalLanguageCode: $originalLanguageCode, translatedLanguageCode: $translatedLanguageCode, isApproved: $isApproved, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -56,7 +56,7 @@ abstract mixin class $RemoteTranslationResponseCopyWith<$Res>  {
   factory $RemoteTranslationResponseCopyWith(RemoteTranslationResponse value, $Res Function(RemoteTranslationResponse) _then) = _$RemoteTranslationResponseCopyWithImpl;
 @useResult
 $Res call({
- String hash, String originalText, String translatedText, String originalLanguageCode, String translatedLanguageCode, bool isApproved, DateTime createdAt, DateTime updatedAt
+ String originalText, String translatedText, String originalLanguageCode, String translatedLanguageCode, bool isApproved, DateTime createdAt, DateTime updatedAt
 });
 
 
@@ -73,10 +73,9 @@ class _$RemoteTranslationResponseCopyWithImpl<$Res>
 
 /// Create a copy of RemoteTranslationResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? hash = null,Object? originalText = null,Object? translatedText = null,Object? originalLanguageCode = null,Object? translatedLanguageCode = null,Object? isApproved = null,Object? createdAt = null,Object? updatedAt = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? originalText = null,Object? translatedText = null,Object? originalLanguageCode = null,Object? translatedLanguageCode = null,Object? isApproved = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_self.copyWith(
-hash: null == hash ? _self.hash : hash // ignore: cast_nullable_to_non_nullable
-as String,originalText: null == originalText ? _self.originalText : originalText // ignore: cast_nullable_to_non_nullable
+originalText: null == originalText ? _self.originalText : originalText // ignore: cast_nullable_to_non_nullable
 as String,translatedText: null == translatedText ? _self.translatedText : translatedText // ignore: cast_nullable_to_non_nullable
 as String,originalLanguageCode: null == originalLanguageCode ? _self.originalLanguageCode : originalLanguageCode // ignore: cast_nullable_to_non_nullable
 as String,translatedLanguageCode: null == translatedLanguageCode ? _self.translatedLanguageCode : translatedLanguageCode // ignore: cast_nullable_to_non_nullable
@@ -94,10 +93,9 @@ as DateTime,
 @JsonSerializable()
 
 class _TranslationResponse extends RemoteTranslationResponse {
-   _TranslationResponse({required this.hash, required this.originalText, required this.translatedText, required this.originalLanguageCode, required this.translatedLanguageCode, required this.isApproved, required this.createdAt, required this.updatedAt}): super._();
+   _TranslationResponse({required this.originalText, required this.translatedText, required this.originalLanguageCode, required this.translatedLanguageCode, required this.isApproved, required this.createdAt, required this.updatedAt}): super._();
   factory _TranslationResponse.fromJson(Map<String, dynamic> json) => _$TranslationResponseFromJson(json);
 
-@override final  String hash;
 @override final  String originalText;
 @override final  String translatedText;
 @override final  String originalLanguageCode;
@@ -119,16 +117,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TranslationResponse&&(identical(other.hash, hash) || other.hash == hash)&&(identical(other.originalText, originalText) || other.originalText == originalText)&&(identical(other.translatedText, translatedText) || other.translatedText == translatedText)&&(identical(other.originalLanguageCode, originalLanguageCode) || other.originalLanguageCode == originalLanguageCode)&&(identical(other.translatedLanguageCode, translatedLanguageCode) || other.translatedLanguageCode == translatedLanguageCode)&&(identical(other.isApproved, isApproved) || other.isApproved == isApproved)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TranslationResponse&&(identical(other.originalText, originalText) || other.originalText == originalText)&&(identical(other.translatedText, translatedText) || other.translatedText == translatedText)&&(identical(other.originalLanguageCode, originalLanguageCode) || other.originalLanguageCode == originalLanguageCode)&&(identical(other.translatedLanguageCode, translatedLanguageCode) || other.translatedLanguageCode == translatedLanguageCode)&&(identical(other.isApproved, isApproved) || other.isApproved == isApproved)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,hash,originalText,translatedText,originalLanguageCode,translatedLanguageCode,isApproved,createdAt,updatedAt);
+int get hashCode => Object.hash(runtimeType,originalText,translatedText,originalLanguageCode,translatedLanguageCode,isApproved,createdAt,updatedAt);
 
 @override
 String toString() {
-  return 'RemoteTranslationResponse(hash: $hash, originalText: $originalText, translatedText: $translatedText, originalLanguageCode: $originalLanguageCode, translatedLanguageCode: $translatedLanguageCode, isApproved: $isApproved, createdAt: $createdAt, updatedAt: $updatedAt)';
+  return 'RemoteTranslationResponse(originalText: $originalText, translatedText: $translatedText, originalLanguageCode: $originalLanguageCode, translatedLanguageCode: $translatedLanguageCode, isApproved: $isApproved, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -139,7 +137,7 @@ abstract mixin class _$TranslationResponseCopyWith<$Res> implements $RemoteTrans
   factory _$TranslationResponseCopyWith(_TranslationResponse value, $Res Function(_TranslationResponse) _then) = __$TranslationResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String hash, String originalText, String translatedText, String originalLanguageCode, String translatedLanguageCode, bool isApproved, DateTime createdAt, DateTime updatedAt
+ String originalText, String translatedText, String originalLanguageCode, String translatedLanguageCode, bool isApproved, DateTime createdAt, DateTime updatedAt
 });
 
 
@@ -156,10 +154,9 @@ class __$TranslationResponseCopyWithImpl<$Res>
 
 /// Create a copy of RemoteTranslationResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? hash = null,Object? originalText = null,Object? translatedText = null,Object? originalLanguageCode = null,Object? translatedLanguageCode = null,Object? isApproved = null,Object? createdAt = null,Object? updatedAt = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? originalText = null,Object? translatedText = null,Object? originalLanguageCode = null,Object? translatedLanguageCode = null,Object? isApproved = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_TranslationResponse(
-hash: null == hash ? _self.hash : hash // ignore: cast_nullable_to_non_nullable
-as String,originalText: null == originalText ? _self.originalText : originalText // ignore: cast_nullable_to_non_nullable
+originalText: null == originalText ? _self.originalText : originalText // ignore: cast_nullable_to_non_nullable
 as String,translatedText: null == translatedText ? _self.translatedText : translatedText // ignore: cast_nullable_to_non_nullable
 as String,originalLanguageCode: null == originalLanguageCode ? _self.originalLanguageCode : originalLanguageCode // ignore: cast_nullable_to_non_nullable
 as String,translatedLanguageCode: null == translatedLanguageCode ? _self.translatedLanguageCode : translatedLanguageCode // ignore: cast_nullable_to_non_nullable

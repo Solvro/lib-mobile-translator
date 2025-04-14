@@ -1,3 +1,4 @@
+import "hash.dart";
 import "locale.dart" show SolvroLocale;
 import "managers.dart" show LocalTranslatableManager, RemoteTranslatableManager;
 
@@ -57,7 +58,7 @@ class SolvroTranslator<Local extends TranslationResults, Remote extends Translat
       return text;
     }
 
-    final localTranslation = await localTranslatableManager.getTranslation(text.hashCode, to);
+    final localTranslation = await localTranslatableManager.getTranslation(md5Hash(text), to);
     if (localTranslation != null && validityCheck(localTranslation)) {
       return localTranslation.translatedText;
     }

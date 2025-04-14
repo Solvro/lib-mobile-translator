@@ -13,7 +13,7 @@ abstract interface class TranslationsLocalDataSource {
   ///
   /// The [hash] parameter is the hash of the original text.
   /// The [translatedLangCode] parameter is the language code of the translated text.
-  Future<Translation?> getTranslation(int hash, SolvroLocale translatedLangCode);
+  Future<Translation?> getTranslation(String md5Hash, SolvroLocale translatedLangCode);
 
   /// Adds a translation to the local database.
   Future<int> addTranslation(Translation translation);
