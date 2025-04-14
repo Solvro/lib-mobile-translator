@@ -2,7 +2,3 @@ name: solvro_translator
 
 packages:
   - packages/**
-
-scripts:
-  generate:
-    run: melos exec -c 1 --depends-on build_runner -- dart run build_runner build
