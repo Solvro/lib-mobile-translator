@@ -1,0 +1,10 @@
+include: package:solvro_config/commitlint.yaml
+rules:
+  scope-enum: # define your own scopes here
+    - 2
+    - always
+    - - translatable
+      - generator
+      - cache
+      - core
+      - remote
