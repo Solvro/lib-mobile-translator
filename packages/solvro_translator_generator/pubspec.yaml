@@ -14,7 +14,7 @@ dependencies:
   path: ^1.8.0
   json_annotation: ^4.9.0
   meta: ^1.16.0
-  solvro_translator_core: ^0.2.2
+  solvro_translator_core: ^0.2.3
 
 dev_dependencies:
   solvro_config: ^1.0.1

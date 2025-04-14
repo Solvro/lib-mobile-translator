@@ -1,3 +1,7 @@
+## 0.2.3
+
+- lint fix
+
 ## 0.2.2
 
 - export needed type

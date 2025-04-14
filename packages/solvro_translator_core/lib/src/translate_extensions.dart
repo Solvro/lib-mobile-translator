@@ -1,5 +1,4 @@
 import "../solvro_translator_core.dart";
-import "translatable.dart";
 
 Future<List<String>> _translateList<T extends SolvroTranslator>(
   List<String> value,
