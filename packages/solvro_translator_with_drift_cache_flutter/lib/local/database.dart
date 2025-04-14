@@ -1,5 +1,6 @@
 import "package:drift/drift.dart";
 import "package:drift_flutter/drift_flutter.dart";
+import "package:path_provider/path_provider.dart" show getApplicationSupportDirectory;
 import "package:solvro_translator_core/solvro_translator_core.dart";
 
 import "local_data_source.dart";
@@ -11,7 +12,10 @@ part "database.g.dart";
 /// Database for translations.
 class TranslationsDatabase extends _$TranslationsDatabase implements TranslationsLocalDataSource {
   /// Creates a new [TranslationsDatabase].
-  TranslationsDatabase(String name) : super(driftDatabase(name: name));
+  TranslationsDatabase(String name)
+    : super(
+        driftDatabase(name: name, native: const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory)),
+      );
 
   @override
   int get schemaVersion => 1;
