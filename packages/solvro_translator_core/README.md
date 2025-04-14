@@ -32,7 +32,7 @@ This is only `core` package, meaning this should rarely be used as standalone pa
 
 If despite above warning, you still want to use this package as standalone, the usage would be smth like this:
 
-Then implement the required managers and translation result classes:
+Implement the required managers and translation result classes:
 
 1. Create a concrete implementation of `RemoteTranslatableManager` for your translation service
 2. Create a concrete implementation of `LocalTranslatableManager` for your local storage solution
@@ -41,39 +41,59 @@ Then implement the required managers and translation result classes:
 ## Usage
 
 ```dart
-// Define your translation result implementations
+import "package:solvro_translator_core/solvro_translator_core.dart";
+
 class MyLocalTranslation implements TranslationResults {
+  @override
   final String translatedText;
   final DateTime timestamp;
-  
+
   const MyLocalTranslation(this.translatedText, this.timestamp);
 }
 
 class MyRemoteTranslation implements TranslationResults {
+  @override
   final String translatedText;
-  
+
   const MyRemoteTranslation(this.translatedText);
+}
+
+// Implement local manager
+class MyLocalManager implements LocalTranslatableManager<MyLocalTranslation, MyRemoteTranslation> {
+  @override
+  Future<MyLocalTranslation?> getTranslation(int hash, SolvroLocale locale) async {
+    // Mock implementation - in real usage, fetch from local storage
+    return MyLocalTranslation("Cached: $hash", DateTime.now());
+  }
+
+  @override
+  Future<void> saveTranslation(MyRemoteTranslation translation) async {
+    // Mock implementation - in real usage, save to local storage
+  }
+}
+
+// Implement remote manager
+class MyRemoteManager implements RemoteTranslatableManager<MyRemoteTranslation> {
+  @override
+  Future<MyRemoteTranslation> translate(String text, SolvroLocale from, SolvroLocale to) async {
+    // Mock implementation - in real usage, call translation API
+    return MyRemoteTranslation("Remote: $text");
+  }
 }
 
 // Create a translator instance
 final translator = SolvroTranslator<MyLocalTranslation, MyRemoteTranslation>.init(
   localTranslatableManager: MyLocalManager(),
   remoteTranslatableManager: MyRemoteManager(),
-  validityCheck: (translation) => 
-    DateTime.now().difference(translation.timestamp).inDays < 30,
+  validityCheck: (translation) => DateTime.now().difference(translation.timestamp).inDays < 30,
   sourceLocale: SolvroLocale.pl,
 );
 
-// Translate text
-final translated = await translator.translate(
-  "Hello world",
-  SolvroLocale.en,
-);
+final translated = await translator.translate("Hello world", SolvroLocale.en);
+
 ```
 
 ## Additional information
-
-For more advanced use cases and examples, check the `/example` directory in this package.
 
 To contribute to this package or report issues, please visit the [GitHub repository](https://github.com/Solvro/lib-mobile-solvro-translator).
 
