@@ -1,4 +1,4 @@
-name: solvro_translatable_generator
+name: solvro_translator_generator
 description: A starting point for Dart libraries or applications.
 version: 0.1.0
 resolution: workspace
@@ -8,13 +8,13 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
-  solvro_translator_core: ^0.1.0
   analyzer: ^7.3.0
   build: ^2.4.2
   source_gen: ^2.0.0
   path: ^1.8.0
   json_annotation: ^4.9.0
   meta: ^1.16.0
+  solvro_translator_core: ^0.1.0
 
 dev_dependencies:
   solvro_config: ^1.0.1
