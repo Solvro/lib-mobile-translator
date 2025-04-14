@@ -16,7 +16,7 @@ class LocalTranslationsRepository
   const LocalTranslationsRepository(this._dataSource);
 
   @override
-  Future<LocalTranslationWithInterface?> getTranslation(int hash, SolvroLocale locale) async {
+  Future<LocalTranslationWithInterface?> getTranslation(String hash, SolvroLocale locale) async {
     final translation = await _dataSource.getTranslation(hash, locale);
     if (translation == null) return null;
     return LocalTranslationWithInterface.fromTranslation(translation);

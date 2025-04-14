@@ -6,7 +6,7 @@ import "database.dart";
 /// A table for storing translations.
 class Translations extends Table {
   /// The hash of the original text.
-  IntColumn get originalTextHash => integer()();
+  TextColumn get originalTextHash => text()();
 
   /// The translated text.
   TextColumn get translatedText => text()();

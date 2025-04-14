@@ -21,9 +21,9 @@ class TranslationsDatabase extends _$TranslationsDatabase implements Translation
   int get schemaVersion => 1;
 
   @override
-  Future<Translation?> getTranslation(int hash, SolvroLocale translatedLangCode) async {
+  Future<Translation?> getTranslation(String md5Hash, SolvroLocale translatedLangCode) async {
     return (select(translations)..where(
-      (t) => t.originalTextHash.equals(hash) & t.translatedLanguageCode.equals(translatedLangCode.index),
+      (t) => t.originalTextHash.equals(md5Hash) & t.translatedLanguageCode.equals(translatedLangCode.index),
     )).getSingleOrNull();
   }
 

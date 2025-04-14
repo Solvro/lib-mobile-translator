@@ -1,3 +1,7 @@
+## 0.3.0
+
+- use md5 hash
+
 ## 0.2.3
 
 - lint fix
