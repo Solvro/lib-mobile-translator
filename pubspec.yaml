@@ -2,9 +2,17 @@ name: solvro_translator
 publish_to: none
 environment:
   sdk: ^3.7.0
+
 workspace:
   - packages/solvro_translatable
   - packages/solvro_translatable_generator
   - packages/solvro_translator_with_drift_cache
+
 dev_dependencies:
   melos: ^6.3.2
+  solvro_config: ^1.0.1
+
+dependency_overrides:
+  pub_updater: ^0.5.0
+lint_staged:
+  "lib/**.dart": dart format && dart fix --apply
