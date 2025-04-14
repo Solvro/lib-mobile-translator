@@ -1,9 +1,7 @@
 name: solvro_translator
 
 packages:
-  - packages/solvro_translatable
-  - packages/solvro_translatable_generator
-  - packages/solvro_translator_with_drift_cache
+  - packages/**
 
 scripts:
   generate:
