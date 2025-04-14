@@ -12,15 +12,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: subosito/flutter-action@v2
+      - name: 🎯 Setup Dart
+        uses: dart-lang/setup-dart@v1
         with:
-          channel: "stable"
-          flutter-version-file: pubspec.yaml
+          sdk: "stable"
           
-      - run: flutter --version
+      - run: dart --version
 
       - name: Install dependencies
-        run: flutter pub get
+        run: dart pub get
 
       - name: Validate PR Commits
         run: VERBOSE=true dart run commitlint_cli --from=${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to=${{ github.event.pull_request.head.sha }} --config commitlint.yaml
