@@ -1,3 +1,7 @@
+## 0.2.2
+
+- export needed type
+
 ## 0.2.1
 
 - docs update
