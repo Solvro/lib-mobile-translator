@@ -1,3 +1,7 @@
+## 0.2.1
+
+- bump `solvro_translator_core`
+
 ## 0.2.0
 
 - bump `solvro_translator_core`

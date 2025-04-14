@@ -1,3 +1,7 @@
+## 0.2.1
+
+- docs update
+
 ## 0.2.0
 
 - add translating extensions on the TranslatableInterface

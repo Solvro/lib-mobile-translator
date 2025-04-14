@@ -6,7 +6,6 @@ environment:
 workspace:
   - packages/solvro_translator_generator
   - packages/solvro_translator_core
-  - packages/solvro_translator_with_drift_cache
 
 dev_dependencies:
   melos: 7.0.0-dev.5

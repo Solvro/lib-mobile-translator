@@ -24,13 +24,7 @@ A lightweight, efficient translation framework for Dart and Flutter applications
 - **Type-safe translation results** through generic implementation
 - **Validity checking** to ensure translations remain current
 
-## Note
-
-This is only `core` package, meaning this should rarely be used as standalone package. See [Solvro Translator With Drift Cache for full recommended usage](https://pub.dev/packages/solvro_translator_with_drift_cache)
-
 ## Custom Usage
-
-If despite above warning, you still want to use this package as standalone, the usage would be smth like this:
 
 Implement the required managers and translation result classes:
 
