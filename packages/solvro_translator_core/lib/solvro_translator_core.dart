@@ -1,4 +1,5 @@
 export "src/annotations.dart";
+export "src/hash.dart" show md5Hash;
 export "src/locale.dart" show SolvroLocale;
 export "src/managers.dart" show LocalTranslatableManager, RemoteTranslatableManager;
 export "src/solvro_translator.dart";

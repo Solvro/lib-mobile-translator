@@ -5,4 +5,4 @@ rules:
     - always
     - - core
       - builder
-      - translator
+      - flutter
