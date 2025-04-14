@@ -3,8 +3,7 @@ rules:
   scope-enum: # define your own scopes here
     - 2
     - always
-    - - translatable
+    - - core
       - generator
       - cache
-      - core
       - remote
