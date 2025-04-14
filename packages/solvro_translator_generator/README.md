@@ -12,4 +12,4 @@ and the Flutter guide for
 -->
 # Solvro Translator Generator
 
-Generator for [Solvro Translator](https://github.com/Solvro/lib-mobile-solvro-translator). Part of the Solvro Translator ecosystem for handling translations in Dart/Flutter applications.
+Generator for [Solvro Translator](https://github.com/Solvro/lib-mobile-translator). Part of the Solvro Translator ecosystem for handling translations in Dart/Flutter applications.

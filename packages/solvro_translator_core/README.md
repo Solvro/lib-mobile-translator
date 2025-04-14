@@ -95,6 +95,6 @@ final translated = await translator.translate("Hello world", SolvroLocale.en);
 
 ## Additional information
 
-To contribute to this package or report issues, please visit the [GitHub repository](https://github.com/Solvro/lib-mobile-solvro-translator).
+To contribute to this package or report issues, please visit the [GitHub repository](https://github.com/Solvro/lib-mobile-translator).
 
 This package is maintained by [Solvro](https://github.com/Solvro).

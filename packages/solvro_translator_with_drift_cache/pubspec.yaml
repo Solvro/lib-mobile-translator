@@ -2,7 +2,7 @@ name: solvro_translator_with_drift_cache
 description: A starting point for Dart libraries or applications.
 version: 0.1.0
 resolution: workspace
-repository: https://github.com/Solvro/lib-mobile-solvro-translator
+repository: https://github.com/Solvro/lib-mobile-translator
 
 environment:
   sdk: ^3.7.2
