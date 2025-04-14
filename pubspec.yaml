@@ -9,7 +9,7 @@ workspace:
   - packages/solvro_translator_with_drift_cache
 
 dev_dependencies:
-  melos: 7.0.0-dev.5
+  melos: 7.0.0-dev.8
   solvro_config: ^1.0.1
 
 dependency_overrides:
