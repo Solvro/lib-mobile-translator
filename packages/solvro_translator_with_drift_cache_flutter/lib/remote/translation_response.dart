@@ -1,5 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:solvro_translator_core/solvro_translator_core.dart";
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 
 import "../local/database.dart";
 
@@ -33,7 +35,7 @@ abstract class RemoteTranslationResponse with _$RemoteTranslationResponse implem
 
   /// Converts the [RemoteTranslationResponse] to a [Translation] object.
   Translation toLocalTranslationModel() => Translation(
-    originalTextHash: originalText.hashCode,
+    originalTextHash: md5.convert(utf8.encode(originalText)).bytes.buffer.asByteData().getInt64(0),
     translatedText: translatedText,
     originalLanguageCode: SolvroLocale.values.byName(originalLanguageCode),
     translatedLanguageCode: SolvroLocale.values.byName(translatedLanguageCode),
