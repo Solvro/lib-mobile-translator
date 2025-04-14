@@ -11,29 +11,70 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Solvro Translator Core
+
+A lightweight, efficient translation framework for Dart and Flutter applications that provides a solid foundation for text localization with support for both local caching and remote translation services.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **Dual-layer translation system** with local cache and remote service integration
+- **Locale management** for handling translation between different languages
+- **Efficient caching** to minimize network requests and improve performance
+- **Extensible architecture** with clear interfaces for custom implementations
+- **Type-safe translation results** through generic implementation
+- **Validity checking** to ensure translations remain current
 
-## Getting started
+## Note
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+This is only `core` package, meaning this should rarely be used as standalone package. See [Solvro Translator With Drift Cache for full recommended usage](https://pub.dev/packages/solvro_translator_with_drift_cache)
+
+## Custom Usage
+
+If despite above warning, you still want to use this package as standalone, the usage would be smth like this:
+
+Then implement the required managers and translation result classes:
+
+1. Create a concrete implementation of `RemoteTranslatableManager` for your translation service
+2. Create a concrete implementation of `LocalTranslatableManager` for your local storage solution
+3. Define custom `TranslationResults` classes for both local and remote translations
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+// Define your translation result implementations
+class MyLocalTranslation implements TranslationResults {
+  final String translatedText;
+  final DateTime timestamp;
+  
+  const MyLocalTranslation(this.translatedText, this.timestamp);
+}
+
+class MyRemoteTranslation implements TranslationResults {
+  final String translatedText;
+  
+  const MyRemoteTranslation(this.translatedText);
+}
+
+// Create a translator instance
+final translator = SolvroTranslator<MyLocalTranslation, MyRemoteTranslation>.init(
+  localTranslatableManager: MyLocalManager(),
+  remoteTranslatableManager: MyRemoteManager(),
+  validityCheck: (translation) => 
+    DateTime.now().difference(translation.timestamp).inDays < 30,
+  sourceLocale: SolvroLocale.pl,
+);
+
+// Translate text
+final translated = await translator.translate(
+  "Hello world",
+  SolvroLocale.en,
+);
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+For more advanced use cases and examples, check the `/example` directory in this package.
+
+To contribute to this package or report issues, please visit the [GitHub repository](https://github.com/Solvro/lib-mobile-solvro-translator).
+
+This package is maintained by [Solvro](https://github.com/Solvro).
