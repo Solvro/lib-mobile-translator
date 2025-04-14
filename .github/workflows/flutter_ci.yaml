@@ -21,29 +21,29 @@ jobs:
       - run: flutter --version
 
       - name: Install dependencies
-        run: flutter pub get
-        
-      - name: Remove lib/l10n directory
-        run: rm -rf lib/l10n/*.dart
+        run: |
+          flutter pub global activate melos
+          flutter pub get
+          melos bootstrap
 
+      - name: Remove lib/l10n directory
+        run: melos exec -- rm -rf lib/l10n/*.dart || true
+        
       - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
+        run: melos exec -- dart format --output=none --set-exit-if-changed .
       
       - name: Regenerate the localization files
-        run: flutter gen-l10n
+        run: melos exec -- flutter gen-l10n || true
 
-      - name: Example .env
-        run: cp example.env .env
-
-      - name: generate files
-        run: dart run build_runner build --delete-conflicting-outputs
+      - name: Generate files
+        run: melos run generate
 
       - name: Analyze project source
-        run: flutter analyze --fatal-infos
+        run: melos exec -- flutter analyze --fatal-infos
 
       - name: Run custom lints
-        run: dart run custom_lint --fatal-infos
+        run: melos exec -- dart run custom_lint --fatal-infos
 
       - name: Flutter tests
-        run: flutter test
+        run: melos exec -- flutter test
   
