@@ -26,17 +26,19 @@ jobs:
           melos bootstrap
 
       - name: Remove lib/l10n directory
-        run: melos exec -- rm -rf lib/l10n/*.dart || true
+        run: melos exec --scope="*flutter*" -- rm -rf lib/l10n/*.dart || true
         
       - name: Verify formatting
         run: melos exec -- dart format --output=none --set-exit-if-changed .
       
       - name: Regenerate the localization files
-        run: melos exec -- flutter gen-l10n || true
+        run: melos exec --scope="*flutter*" -- flutter gen-l10n || true
 
+      - name: Analyze Dart packages
+        run: melos exec --no-flutter -- dart analyze --fatal-infos
 
-      - name: Analyze project source
-        run: melos exec -- flutter analyze --fatal-infos
+      - name: Analyze Flutter packages
+        run: melos exec --flutter -- flutter analyze --fatal-infos
 
       - name: Run custom lints
         run: melos exec -- dart run custom_lint --fatal-infos
