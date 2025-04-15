@@ -26,7 +26,8 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  solvro_translator_with_drift_cache_flutter: ^0.3.0
+  solvro_translator_with_drift_cache_flutter: ^0.4.0
+  solvro_translator_core: ^0.4.0
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
 
@@ -34,7 +35,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   freezed: ^3.0.2
   json_serializable: ^6.9.4
-  solvro_translator_generator: ^0.3.0
+  solvro_translator_generator: ^0.4.0
 ```
 
 ## Usage
@@ -182,6 +183,13 @@ Future<void> translateCatalog(SolvroTranslator translator) async {
   // Translate the entire catalog including nested products
   final spanishCatalog = await catalog.translate(translator, SolvroLocale.es);
 }
+
+### Flushing Old Translations
+
+The package includes functionality to flush old translations from the cache:
+
+translator.deleteOldTranslations(Duration(days: 7))
+
 ```
 
 ## Additional information

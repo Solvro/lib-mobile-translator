@@ -35,4 +35,7 @@ abstract class LocalTranslatableManager<Local extends TranslationResults, Remote
   ///
   /// Takes a [translation] of type [Remote] and persists it locally for future use.
   Future<void> saveTranslation(Remote translation);
+
+  /// Deletes translations older than [duration] from local storage.
+  Future<void> deleteOldTranslations(Duration duration);
 }

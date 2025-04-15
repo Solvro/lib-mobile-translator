@@ -26,4 +26,9 @@ class LocalTranslationsRepository
   Future<void> saveTranslation(RemoteTranslationResponse translation) async {
     await _dataSource.addTranslation(translation.toLocalTranslationModel());
   }
+
+  @override
+  Future<void> deleteOldTranslations(Duration duration) async {
+    await _dataSource.deleteOldTranslations(duration);
+  }
 }

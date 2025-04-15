@@ -25,4 +25,9 @@ class SolvroTranslatorWithDriftCache
         validityCheck: (translation) => translation.isApproved,
         sourceLocale: args.sourceLocale,
       );
+
+  /// Flushes the old data from the local database.
+  Future<void> flushOldData(Duration duration) async {
+    await localTranslatableManager.deleteOldTranslations(duration);
+  }
 }
