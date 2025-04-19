@@ -14,7 +14,11 @@ class TranslationsDatabase extends _$TranslationsDatabase implements Translation
   /// Creates a new [TranslationsDatabase].
   TranslationsDatabase(String name)
     : super(
-        driftDatabase(name: name, native: const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory)),
+        driftDatabase(
+          name: name,
+          native: const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory),
+          web: DriftWebOptions(sqlite3Wasm: Uri.parse("sqlite3.wasm"), driftWorker: Uri.parse("drift_worker.js")),
+        ),
       );
 
   @override

@@ -38,6 +38,9 @@ dev_dependencies:
   solvro_translator_generator: ^0.4.0
 ```
 
+## Web instalation
+If you want to use web, you need to add `drift_worker.js` and `sqlite3.wasm` to `web/` from these instructions: https://drift.simonbinder.eu/platforms/web/#prerequisites 
+
 ## Usage
 
 ### Initialize the Translator
