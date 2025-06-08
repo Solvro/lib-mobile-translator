@@ -1,3 +1,7 @@
+## 0.4.2
+
+- fixed nullable strings translation
+
 ## 0.4.0
 
 - added old translation flushing
