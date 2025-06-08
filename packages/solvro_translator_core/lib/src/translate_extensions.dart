@@ -1,11 +1,11 @@
 import "../solvro_translator_core.dart";
 
-Future<List<String>> _translateList<T extends SolvroTranslator>(
-  List<String> value,
+Future<List<String?>> _translateList<T extends SolvroTranslator>(
+  List<String?> value,
   T translator,
   SolvroLocale locale,
 ) async {
-  return Future.wait(value.map((value) => translator.translate(value, locale)));
+  return Future.wait(value.map((value) => value == null ? Future.value() : translator.translate(value, locale)));
 }
 
 Future<void> _translateProperty<T extends TranslatableInterface, Translator extends SolvroTranslator>(
@@ -16,9 +16,9 @@ Future<void> _translateProperty<T extends TranslatableInterface, Translator exte
 ) async {
   switch (property) {
     case TranslatableJSONPropertyString(:final fieldName):
-      json[fieldName] = await translator.translate(json[fieldName] as String, locale);
+      json[fieldName] = json[fieldName] == null ? null : await translator.translate(json[fieldName] as String, locale);
     case TranslatableNestedStringList(:final fieldName):
-      json[fieldName] = await _translateList(json[fieldName] as List<String>, translator, locale);
+      json[fieldName] = await _translateList(json[fieldName] as List<String?>, translator, locale);
     case TranslatableNestedJSONObject(:final properties, :final fieldName):
       await _translateMultProperties(json[fieldName] as Map<String, dynamic>, properties, translator, locale);
     case TranslatableNestedObjectList(:final properties, :final fieldName):
