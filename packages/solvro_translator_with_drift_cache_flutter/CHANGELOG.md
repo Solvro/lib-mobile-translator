@@ -1,3 +1,7 @@
+## 0.4.2
+
+- bump `solvro_translator_core`
+
 ## 0.4.1
 
 - add missing web support

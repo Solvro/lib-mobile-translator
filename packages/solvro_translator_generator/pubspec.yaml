@@ -1,6 +1,6 @@
 name: solvro_translator_generator
 description: Generator for Solvro Translator for Dart/Flutter applications.
-version: 0.4.0
+version: 0.4.2
 resolution: workspace
 repository: https://github.com/Solvro/lib-mobile-translator
 
@@ -14,7 +14,7 @@ dependencies:
   path: ^1.8.0
   json_annotation: ^4.9.0
   meta: ^1.16.0
-  solvro_translator_core: ^0.4.0
+  solvro_translator_core: ^0.4.2
 
 dev_dependencies:
   solvro_config: ^1.0.1

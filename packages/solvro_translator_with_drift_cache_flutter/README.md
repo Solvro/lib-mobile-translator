@@ -39,6 +39,7 @@ dev_dependencies:
 ```
 
 ## Web instalation
+
 If you want to use web, you need to add `drift_worker.js` and `sqlite3.wasm` to `web/` from these instructions: https://drift.simonbinder.eu/platforms/web/#prerequisites 
 
 ## Usage
