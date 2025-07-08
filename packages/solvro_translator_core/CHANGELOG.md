@@ -1,3 +1,8 @@
+## 0.5.0
+
+- fixed nullable translations even more
+
+
 ## 0.4.2
 
 - fixed nullable strings translation

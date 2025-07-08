@@ -18,13 +18,15 @@ Future<void> _translateProperty<T extends TranslatableInterface, Translator exte
     case TranslatableJSONPropertyString(:final fieldName):
       json[fieldName] = json[fieldName] == null ? null : await translator.translate(json[fieldName] as String, locale);
     case TranslatableNestedStringList(:final fieldName):
-      json[fieldName] = await _translateList(json[fieldName] as List<String?>, translator, locale);
+      json[fieldName] = await _translateList(json[fieldName] as List<String?>? ?? [], translator, locale);
     case TranslatableNestedJSONObject(:final properties, :final fieldName):
-      await _translateMultProperties(json[fieldName] as Map<String, dynamic>, properties, translator, locale);
+      await _translateMultProperties(json[fieldName] as Map<String, dynamic>? ?? {}, properties, translator, locale);
     case TranslatableNestedObjectList(:final properties, :final fieldName):
-      final list = json[fieldName] as List<dynamic>;
+      final list = json[fieldName] as List<dynamic>? ?? [];
       await Future.wait(
-        list.map((item) => _translateMultProperties(item as Map<String, dynamic>, properties, translator, locale)),
+        list.map(
+          (item) => _translateMultProperties(item as Map<String, dynamic>? ?? {}, properties, translator, locale),
+        ),
       );
   }
 }
