@@ -26,9 +26,10 @@ class TranslationsDatabase extends _$TranslationsDatabase implements Translation
 
   @override
   Future<Translation?> getTranslation(String md5Hash, SolvroLocale translatedLangCode) async {
-    return (select(translations)..where(
-      (t) => t.originalTextHash.equals(md5Hash) & t.translatedLanguageCode.equals(translatedLangCode.index),
-    )).getSingleOrNull();
+    return (select(
+          translations,
+        )..where((t) => t.originalTextHash.equals(md5Hash) & t.translatedLanguageCode.equals(translatedLangCode.index)))
+        .getSingleOrNull();
   }
 
   @override

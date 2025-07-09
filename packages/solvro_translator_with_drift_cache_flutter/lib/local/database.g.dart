@@ -114,10 +114,14 @@ class $TranslationsTable extends Translations with TableInfo<$TranslationsTable,
   Translation map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return Translation(
-      originalTextHash:
-          attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}original_text_hash'])!,
-      translatedText:
-          attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}translated_text'])!,
+      originalTextHash: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}original_text_hash'],
+      )!,
+      translatedText: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}translated_text'],
+      )!,
       originalLanguageCode: $TranslationsTable.$converteroriginalLanguageCode.fromSql(
         attachedDatabase.typeMapping.read(DriftSqlType.int, data['${effectivePrefix}original_language_code'])!,
       ),
@@ -248,10 +252,12 @@ class Translation extends DataClass implements Insertable<Translation> {
     return Translation(
       originalTextHash: data.originalTextHash.present ? data.originalTextHash.value : this.originalTextHash,
       translatedText: data.translatedText.present ? data.translatedText.value : this.translatedText,
-      originalLanguageCode:
-          data.originalLanguageCode.present ? data.originalLanguageCode.value : this.originalLanguageCode,
-      translatedLanguageCode:
-          data.translatedLanguageCode.present ? data.translatedLanguageCode.value : this.translatedLanguageCode,
+      originalLanguageCode: data.originalLanguageCode.present
+          ? data.originalLanguageCode.value
+          : this.originalLanguageCode,
+      translatedLanguageCode: data.translatedLanguageCode.present
+          ? data.translatedLanguageCode.value
+          : this.translatedLanguageCode,
       isApproved: data.isApproved.present ? data.isApproved.value : this.isApproved,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );

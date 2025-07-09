@@ -80,3 +80,6 @@ coverage/
 app.*.symbols
 
 app.*.map.json
+
+# FVM Version Cache
+.fvm/
