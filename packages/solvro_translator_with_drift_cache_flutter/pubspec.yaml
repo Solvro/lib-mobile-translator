@@ -5,8 +5,8 @@ repository: https://github.com/solvro/lib-mobile-translator
 version: "0.5.0"
 
 environment:
-  sdk: ^3.7.2
-  flutter: ">=3.29.2"
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
 
 dependencies:
   flutter:
