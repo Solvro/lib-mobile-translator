@@ -32,6 +32,11 @@ class MyLocalManager implements LocalTranslatableManager<MyLocalTranslation, MyR
   Future<void> deleteOldTranslations(Duration duration) async {
     // Mock implementation - in real usage, delete old translations from storage
   }
+
+  @override
+  Future<void> clearTranslations() async {
+    // Mock implementation - in real usage, clear all translations from storage
+  }
 }
 
 // Implement remote manager

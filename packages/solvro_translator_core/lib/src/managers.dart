@@ -38,4 +38,7 @@ abstract class LocalTranslatableManager<Local extends TranslationResults, Remote
 
   /// Deletes translations older than [duration] from local storage.
   Future<void> deleteOldTranslations(Duration duration);
+
+  /// Clears all translations from local storage.
+  Future<void> clearTranslations();
 }

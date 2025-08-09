@@ -31,4 +31,9 @@ class LocalTranslationsRepository
   Future<void> deleteOldTranslations(Duration duration) async {
     await _dataSource.deleteOldTranslations(duration);
   }
+
+  @override
+  Future<void> clearTranslations() async {
+    await _dataSource.clearTranslations();
+  }
 }

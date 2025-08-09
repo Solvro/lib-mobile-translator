@@ -1,3 +1,7 @@
+## 0.6.0
+
+- added clearTranslations method
+
 ## 0.5.0
 
 - fixed nullable translations even more
