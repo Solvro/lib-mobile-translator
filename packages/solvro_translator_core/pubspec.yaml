@@ -1,6 +1,6 @@
 name: solvro_translator_core
 description: Core package for Solvro Translator with annotations, types and pure logic
-version: 0.6.0
+version: 0.7.0
 resolution: workspace
 repository: https://github.com/Solvro/lib-mobile-translator
 
@@ -11,5 +11,5 @@ dependencies:
   crypto: ^3.0.6
 
 dev_dependencies:
-  solvro_config: ^1.0.1
+  solvro_config: ^1.1.1
   test: ^1.24.0
