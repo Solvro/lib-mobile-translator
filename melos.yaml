@@ -1,5 +1,0 @@
-name: solvro_translator
-
-packages:
-  - packages/**
-sdkPath: .fvm/flutter_sdk
