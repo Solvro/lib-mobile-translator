@@ -26,6 +26,7 @@ class SolvroTranslator<Local extends TranslationResults, Remote extends Translat
   final RemoteTranslatableManager<Remote> remoteTranslatableManager;
 
   /// Function to check if a local translation is still valid.
+  // ignore: unsafe_variance
   final ValidityCheck<Local> validityCheck;
 
   /// The source locale from which text will be translated.

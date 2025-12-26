@@ -4,7 +4,7 @@ Future<List<String?>> _translateList<T extends SolvroTranslator>(
   List<String?> value,
   T translator,
   SolvroLocale locale,
-) async {
+) {
   return Future.wait(value.map((value) => value == null ? Future.value() : translator.translate(value, locale)));
 }
 
