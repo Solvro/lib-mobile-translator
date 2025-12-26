@@ -25,7 +25,7 @@ class TranslationsDatabase extends _$TranslationsDatabase implements Translation
   int get schemaVersion => 1;
 
   @override
-  Future<Translation?> getTranslation(String md5Hash, SolvroLocale translatedLangCode) async {
+  Future<Translation?> getTranslation(String md5Hash, SolvroLocale translatedLangCode) {
     return (select(
           translations,
         )..where((t) => t.originalTextHash.equals(md5Hash) & t.translatedLanguageCode.equals(translatedLangCode.index)))
@@ -33,18 +33,18 @@ class TranslationsDatabase extends _$TranslationsDatabase implements Translation
   }
 
   @override
-  Future<int> addTranslation(Translation translation) async {
+  Future<int> addTranslation(Translation translation) {
     return into(translations).insert(translation, mode: InsertMode.insertOrReplace);
   }
 
   @override
-  Future<int> deleteOldTranslations(Duration duration) async {
+  Future<int> deleteOldTranslations(Duration duration) {
     final DateTime thresholdDate = DateTime.now().subtract(duration);
     return (delete(translations)..where((t) => t.createdAt.isSmallerThanValue(thresholdDate))).go();
   }
 
   @override
-  Future<int> clearTranslations() async {
+  Future<int> clearTranslations() {
     return delete(translations).go();
   }
 }
