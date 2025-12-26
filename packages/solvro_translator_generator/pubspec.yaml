@@ -8,7 +8,7 @@ environment:
   sdk: ^3.8.0
 
 dependencies:
-  analyzer: ^8.0.0
+  analyzer: ^8.4.0
   build: ^4.0.3
   source_gen: ^4.1.0
   path: ^1.9.1

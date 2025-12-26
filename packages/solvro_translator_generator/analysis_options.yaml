@@ -1,1 +1,6 @@
 include: package:solvro_config/package.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.translatable.g.dart"
