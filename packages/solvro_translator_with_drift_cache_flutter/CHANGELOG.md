@@ -1,3 +1,11 @@
+## 0.8.0
+
+- bump `solvro_translator_core`
+
+## 0.7.0
+
+- bump `solvro_translator_core`
+
 ## 0.6.0
 
 - added clearTranslations method

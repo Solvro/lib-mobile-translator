@@ -20,7 +20,7 @@ class MyLocalManager implements LocalTranslatableManager<MyLocalTranslation, MyR
   @override
   Future<MyLocalTranslation?> getTranslation(String md5Hash, SolvroLocale locale) async {
     // Mock implementation - in real usage, fetch from local storage
-    return MyLocalTranslation("Cached: $hash", DateTime.now());
+    return MyLocalTranslation("Cached: $md5Hash", DateTime.now());
   }
 
   @override

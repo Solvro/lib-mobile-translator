@@ -6,6 +6,13 @@ import "package:solvro_translator_core/solvro_translator_core.dart"
     show AllFieldsTranslatable, NonTranslatableField, Translatable, TranslatableField;
 import "package:source_gen/source_gen.dart";
 
+/// Type checkers for annotations
+const _translatableFieldChecker = TypeChecker.typeNamed(TranslatableField);
+const _nonTranslatableFieldChecker = TypeChecker.typeNamed(NonTranslatableField);
+const _allFieldsTranslatableChecker = TypeChecker.typeNamed(AllFieldsTranslatable);
+const _jsonSerializableChecker = TypeChecker.typeNamed(JsonSerializable);
+const _jsonKeyChecker = TypeChecker.typeNamed(JsonKey);
+
 /// A generator that generates a translatable mixin.
 class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
   @override
@@ -18,7 +25,7 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
     final className = element.name;
     final mixinName = "_\$${className}Translatable";
 
-    buffer.writeln("part of '${element.source.uri.pathSegments.last}';");
+    buffer.writeln("part of '${element.library.uri.pathSegments.last}';");
 
     buffer.writeln("mixin $mixinName implements TranslatableInterface {");
     buffer.writeln("  @override");
@@ -37,7 +44,7 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
 
     final fieldRename = _getFieldRenameFromAnnotation(factoryConstructor);
 
-    for (final parameter in factoryConstructor.parameters) {
+    for (final parameter in factoryConstructor.formalParameters) {
       if (_shouldGenerateForParameter(parameter, makeFieldsTranslatableByDefault)) {
         _generatePropertyForParameter(buffer, parameter, "    ", makeFieldsTranslatableByDefault, fieldRename);
       }
@@ -55,21 +62,22 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
   ConstructorElement? _findFreezedFactoryConstructor(ClassElement classElement) {
     // Look for the main factory constructor that Freezed uses
     for (final constructor in classElement.constructors) {
-      if (constructor.isFactory && !constructor.name.contains("fromJson")) {
+      if (constructor.isFactory && !(constructor.name?.contains("fromJson") ?? false)) {
         return constructor;
       }
     }
     return null;
   }
 
-  bool _shouldGenerateForParameter(ParameterElement parameter, bool defaultTranslatable) {
+  bool _shouldGenerateForParameter(FormalParameterElement parameter, bool defaultTranslatable) {
     // Skip private fields
-    if (parameter.name.startsWith("_")) return false;
+    final paramName = parameter.name;
+    if (paramName == null || paramName.startsWith("_")) return false;
 
     // Check for explicit annotations
-    final isExplicitlyTranslatable = const TypeChecker.fromRuntime(TranslatableField).hasAnnotationOf(parameter);
+    final isExplicitlyTranslatable = _translatableFieldChecker.hasAnnotationOf(parameter);
 
-    final isExplicitlyNonTranslatable = const TypeChecker.fromRuntime(NonTranslatableField).hasAnnotationOf(parameter);
+    final isExplicitlyNonTranslatable = _nonTranslatableFieldChecker.hasAnnotationOf(parameter);
 
     if (isExplicitlyTranslatable) return true;
     if (isExplicitlyNonTranslatable) return false;
@@ -80,7 +88,7 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
 
   FieldRename? _getFieldRenameFromAnnotation(ConstructorElement factoryConstructor) {
     // Check for JsonSerializable annotation and its fieldRename parameter
-    final jsonSerializable = const TypeChecker.fromRuntime(JsonSerializable).firstAnnotationOf(factoryConstructor);
+    final jsonSerializable = _jsonSerializableChecker.firstAnnotationOf(factoryConstructor);
     FieldRename? fieldRename;
     if (jsonSerializable != null) {
       final fieldRenameObj = jsonSerializable.getField("fieldRename");
@@ -94,7 +102,7 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
 
   void _generatePropertyForParameter(
     StringBuffer buffer,
-    ParameterElement parameter,
+    FormalParameterElement parameter,
     String indent,
     bool makeFieldsTranslatableByDefault,
     FieldRename? fieldRename,
@@ -104,10 +112,11 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
     }
 
     final isSnakeRenamed = fieldRename == FieldRename.snake;
+    final paramName = parameter.name ?? "";
 
     final fieldName =
-        const TypeChecker.fromRuntime(JsonKey).firstAnnotationOf(parameter)?.getField("name")?.toStringValue() ??
-        (!isSnakeRenamed ? parameter.name : _snakeCase(parameter.name));
+        _jsonKeyChecker.firstAnnotationOf(parameter)?.getField("name")?.toStringValue() ??
+        (!isSnakeRenamed ? paramName : _snakeCase(paramName));
 
     final fieldType = parameter.type;
 
@@ -179,7 +188,7 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
     final factoryConstructor = _findFreezedFactoryConstructor(classElement);
 
     // Check if the class has @AllFieldsTranslatable annotation
-    final classAnnotation = const TypeChecker.fromRuntime(AllFieldsTranslatable).firstAnnotationOf(classElement);
+    final classAnnotation = _allFieldsTranslatableChecker.firstAnnotationOf(classElement);
 
     // Use class annotation value if present, otherwise use passed parameter
     final bool effectiveMakeFieldsTranslatable;
@@ -198,7 +207,7 @@ class TranslatableGenerator extends GeneratorForAnnotation<Translatable> {
 
     final fieldRename = _getFieldRenameFromAnnotation(factoryConstructor);
 
-    for (final parameter in factoryConstructor.parameters) {
+    for (final parameter in factoryConstructor.formalParameters) {
       if (_shouldGenerateForParameter(parameter, effectiveMakeFieldsTranslatable)) {
         _generatePropertyForParameter(buffer, parameter, indent, effectiveMakeFieldsTranslatable, fieldRename);
       }

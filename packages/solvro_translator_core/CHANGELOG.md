@@ -1,3 +1,11 @@
+## 0.8.0
+
+- maintenance release
+
+## 0.7.0
+
+- maintenance release
+
 ## 0.6.0
 
 - added clearTranslations method
