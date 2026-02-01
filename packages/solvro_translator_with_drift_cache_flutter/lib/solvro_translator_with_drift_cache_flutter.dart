@@ -6,6 +6,7 @@ import "local/local_model.dart";
 import "local/local_repository.dart";
 import "remote/remote_repository.dart";
 import "remote/translation_response.dart";
+export "solvro_translation_offline_exception.dart";
 
 /// Arguments for the [SolvroTranslatorWithDriftCache] constructor.
 typedef SolvroTranslatorArgs = ({Dio dio, SolvroLocale sourceLocale, String databaseName});

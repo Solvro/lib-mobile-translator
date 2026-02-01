@@ -1,3 +1,6 @@
+## 0.8.1
+- add custom offline `SolvroTranslationOfflineException`
+
 ## 0.8.0
 
 - bump `solvro_translator_core`

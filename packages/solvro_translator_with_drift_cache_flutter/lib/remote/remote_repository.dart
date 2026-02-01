@@ -1,6 +1,9 @@
+import "dart:io";
+
 import "package:dio/dio.dart";
 import "package:solvro_translator_core/solvro_translator_core.dart" show RemoteTranslatableManager, SolvroLocale;
 
+import "../solvro_translation_offline_exception.dart";
 import "translation_request.dart";
 import "translation_response.dart";
 
@@ -24,7 +27,17 @@ class RemoteTranslationsRepository extends RemoteTranslatableManager<RemoteTrans
       originalLanguageCode: from.name,
       translatedLanguageCode: to.name,
     );
-    final response = await _dio.post<Map<String, dynamic>>("/translations/openAI", data: request.toJson());
-    return RemoteTranslationResponse.fromJson(response.data!);
+    try {
+      final response = await _dio.post<Map<String, dynamic>>("/translations/openAI", data: request.toJson());
+      return RemoteTranslationResponse.fromJson(response.data!);
+    } on DioException catch (e, st) {
+      final isOffline = e.type == DioExceptionType.connectionError || e.error is SocketException;
+
+      if (isOffline) {
+        throw SolvroTranslationOfflineException(message: "Device appears to be offline.", cause: e, stackTrace: st);
+      }
+
+      rethrow;
+    }
   }
 }
