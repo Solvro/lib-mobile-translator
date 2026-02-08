@@ -14,6 +14,7 @@ class _PendingRequest {
   final SolvroLocale from;
   final SolvroLocale to;
   final Completer<RemoteTranslationResponse> completer;
+  var retryCount = 0;
 
   _PendingRequest({required this.text, required this.from, required this.to, required this.completer});
 }
@@ -184,15 +185,31 @@ class BatchedRemoteTranslationsService extends RemoteTranslatableManager<RemoteT
             );
             req.completer.complete(translation);
           } else {
-            req.completer.completeError(
-              result?.error ??
-                  "Missing translation in batch mode response for: '${req.text.length > 100 ? '${req.text.substring(0, 100)}...' : req.text}'",
-            );
+            // Retry if under max retries, otherwise fail
+            if (req.retryCount < _config.maxRetries) {
+              req.retryCount++;
+              _queues.putIfAbsent(req.to, () => []);
+              _queues[req.to]!.add(req);
+              _scheduleFlush();
+            } else {
+              req.completer.completeError(
+                result?.error ??
+                    "Missing translation in batch mode response for: '${req.text.length > 100 ? '${req.text.substring(0, 100)}...' : req.text}'",
+              );
+            }
           }
         }
       } on Exception catch (e) {
+        // Retry all failed requests if under max retries
         for (final req in requests) {
-          req.completer.completeError(e);
+          if (req.retryCount < _config.maxRetries) {
+            req.retryCount++;
+            _queues.putIfAbsent(req.to, () => []);
+            _queues[req.to]!.add(req);
+            _scheduleFlush();
+          } else {
+            req.completer.completeError(e);
+          }
         }
       }
     }

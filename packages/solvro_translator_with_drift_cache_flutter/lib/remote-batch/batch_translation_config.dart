@@ -20,11 +20,17 @@ class BatchTranslationConfig {
   /// Defaults to true.
   final bool enabled;
 
+  /// Maximum number of retry attempts for failed translations.
+  ///
+  /// Defaults to 3. Set to 0 to disable retries.
+  final int maxRetries;
+
   /// Creates a new [BatchTranslationConfig].
   const BatchTranslationConfig({
     this.debounceDuration = const Duration(milliseconds: 100),
     this.maxBatchSize = 100,
     this.enabled = true,
+    this.maxRetries = 3,
   });
 
   /// Default configuration with standard settings.
@@ -34,11 +40,12 @@ class BatchTranslationConfig {
   static const disabled = BatchTranslationConfig(enabled: false);
 
   /// Creates a copy with modified fields.
-  BatchTranslationConfig copyWith({Duration? debounceDuration, int? maxBatchSize, bool? enabled}) {
+  BatchTranslationConfig copyWith({Duration? debounceDuration, int? maxBatchSize, bool? enabled, int? maxRetries}) {
     return BatchTranslationConfig(
       debounceDuration: debounceDuration ?? this.debounceDuration,
       maxBatchSize: maxBatchSize ?? this.maxBatchSize,
       enabled: enabled ?? this.enabled,
+      maxRetries: maxRetries ?? this.maxRetries,
     );
   }
 }

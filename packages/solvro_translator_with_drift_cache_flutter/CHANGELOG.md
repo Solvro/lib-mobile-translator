@@ -1,3 +1,6 @@
+## 0.9.2
+- add retry mechanism for failed or missing translations in batch mode
+
 ## 0.9.1
 - better error message for missing translations in batch mode
 
