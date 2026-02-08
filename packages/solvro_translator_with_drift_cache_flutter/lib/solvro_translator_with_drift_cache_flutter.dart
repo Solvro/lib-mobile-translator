@@ -20,7 +20,7 @@ typedef SolvroTranslatorArgs = ({
   Dio dio,
   SolvroLocale sourceLocale,
   String databaseName,
-  BatchTranslationConfig? batchConfig,
+  BatchTranslationConfig batchConfig,
 });
 
 /// Implementation of the [SolvroTranslator] class.
@@ -59,12 +59,12 @@ class SolvroTranslatorWithDriftCache
   /// The `batchConfig` parameter controls batching behavior. Defaults to
   /// [BatchTranslationConfig.defaultConfig] if not specified.
   SolvroTranslatorWithDriftCache(SolvroTranslatorArgs args)
-    : _batchedService = (args.batchConfig?.enabled ?? true)
+    : _batchedService = (args.batchConfig.enabled)
           ? BatchedRemoteTranslationsService(BatchedRemoteTranslationsRepository(args.dio), config: args.batchConfig)
           : null,
       super.init(
         localTranslatableManager: LocalTranslationsRepository(TranslationsLocalDataSource(args.databaseName)),
-        remoteTranslatableManager: (args.batchConfig?.enabled ?? true)
+        remoteTranslatableManager: (args.batchConfig.enabled)
             ? BatchedRemoteTranslationsService(BatchedRemoteTranslationsRepository(args.dio), config: args.batchConfig)
             : RemoteTranslationsRepository(args.dio),
         validityCheck: (translation) => translation.isApproved,
