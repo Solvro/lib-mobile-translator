@@ -60,6 +60,7 @@ void main() {
     ),
     sourceLocale: SolvroLocale.pl,
     databaseName: 'translations.db',
+    batchConfig: BatchTranslationConfig.defaultConfig, // see "batch mode" section
   ));
   runApp(
     /// ...
@@ -192,9 +193,51 @@ Future<void> translateCatalog(SolvroTranslator translator) async {
 
 The package includes functionality to flush old translations from the cache:
 
-translator.deleteOldTranslations(Duration(days: 7))
-
+```dart
+translator.flushOldData(Duration(days: 7));
 ```
+
+### Batch Mode
+
+By default, the package uses smart batching to optimize network requests. Multiple translation calls made within a short time window (100ms by default) are automatically batched into a single API request. This is fully transparent to the caller.
+
+#### Customizing Batch Configuration
+
+You can customize batching behavior by passing a `BatchTranslationConfig`:
+
+```dart
+final translator = SolvroTranslatorWithDriftCache((
+  dio: dio,
+  sourceLocale: SolvroLocale.en,
+  databaseName: "translations",
+  batchConfig: BatchTranslationConfig(
+    debounceDuration: Duration(milliseconds: 150),  // Wait 150ms before sending batch
+    maxBatchSize: 50,                               // Maximum 50 texts per batch
+    maxRetries: 3,                                  // Retry failed translations 3 times
+  ),
+));
+```
+
+#### Disabling Batch Mode
+
+To disable batching and send translations individually:
+
+```dart
+final translator = SolvroTranslatorWithDriftCache((
+  dio: dio,
+  sourceLocale: SolvroLocale.en,
+  databaseName: "translations",
+  batchConfig: BatchTranslationConfig.disabled,
+));
+```
+
+#### Batch Mode Features
+
+- **Debounced batching**: Collects requests within a configurable time window before sending
+- **Maximum batch size**: Automatically sends when the batch reaches the limit
+- **Deduplication**: Identical requests are only sent once per batch
+- **Per-locale batching**: Separate batches for each target language
+- **Automatic retries**: Failed translations are automatically retried up to the configured limit
 
 ## Additional information
 

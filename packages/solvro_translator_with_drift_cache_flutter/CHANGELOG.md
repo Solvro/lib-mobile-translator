@@ -1,3 +1,6 @@
+## 0.9.4
+- add batch mode docs note
+
 ## 0.9.3
 - normalize source text for all operations in the batch mode
 
