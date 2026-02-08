@@ -1,3 +1,6 @@
+## 0.9.1
+- better error message for missing translations in batch mode
+
 ## 0.9.0
 - add batched translation feature
 

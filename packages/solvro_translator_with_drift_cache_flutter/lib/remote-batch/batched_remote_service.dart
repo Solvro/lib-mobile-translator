@@ -185,7 +185,7 @@ class BatchedRemoteTranslationsService extends RemoteTranslatableManager<RemoteT
             req.completer.complete(translation);
           } else {
             req.completer.completeError(
-              result?.error ?? "Unknown error. The batch translation failed for this specific text.",
+              result?.error ?? "Missing translation in batch mode response for: '${req.text.substring(0, 100)}...'",
             );
           }
         }
