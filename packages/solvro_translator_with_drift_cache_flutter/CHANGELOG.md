@@ -1,3 +1,6 @@
+## 0.9.0
+- add batched translation feature
+
 ## 0.8.1
 - add custom offline `SolvroTranslationOfflineException`
 
