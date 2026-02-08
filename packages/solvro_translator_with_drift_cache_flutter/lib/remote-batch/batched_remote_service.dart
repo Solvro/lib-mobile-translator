@@ -60,11 +60,14 @@ class BatchedRemoteTranslationsService extends RemoteTranslatableManager<RemoteT
 
   @override
   Future<RemoteTranslationResponse> translate(String originalText, SolvroLocale from, SolvroLocale to) async {
+    // Normalize the text by trimming leading/trailing whitespace
+    final normalizedText = originalText.trim();
+
     // Return immediately if same locale or empty text
-    if (from == to || originalText.trim().isEmpty) {
+    if (from == to || normalizedText.isEmpty) {
       return RemoteTranslationResponse(
-        originalText: originalText,
-        translatedText: originalText,
+        originalText: normalizedText,
+        translatedText: normalizedText,
         originalLanguageCode: from.name,
         translatedLanguageCode: to.name,
         isApproved: true,
@@ -80,16 +83,16 @@ class BatchedRemoteTranslationsService extends RemoteTranslatableManager<RemoteT
       );
     }
 
-    final key = _requestKey(originalText, from, to);
+    final key = _requestKey(normalizedText, from, to);
 
     // Return existing in-flight request if available
     if (_inFlight.containsKey(key)) {
       return _inFlight[key]!;
     }
 
-    // Create a new pending request
+    // Create a new pending request with normalized text
     final completer = Completer<RemoteTranslationResponse>();
-    final pendingRequest = _PendingRequest(text: originalText, from: from, to: to, completer: completer);
+    final pendingRequest = _PendingRequest(text: normalizedText, from: from, to: to, completer: completer);
 
     // Add to queue for the target locale
     _queues.putIfAbsent(to, () => []);
