@@ -1,6 +1,6 @@
 import "package:solvro_translator_core/solvro_translator_core.dart";
 
-import "../remote/translation_response.dart";
+import "../remote-single/translation_response.dart";
 import "local_data_source.dart";
 import "local_model.dart";
 

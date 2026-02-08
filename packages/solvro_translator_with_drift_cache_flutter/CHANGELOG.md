@@ -1,3 +1,18 @@
+## 0.9.4
+- add batch mode docs note
+
+## 0.9.3
+- normalize source text for all operations in the batch mode
+
+## 0.9.2
+- add retry mechanism for failed or missing translations in batch mode
+
+## 0.9.1
+- better error message for missing translations in batch mode
+
+## 0.9.0
+- add batched translation feature
+
 ## 0.8.1
 - add custom offline `SolvroTranslationOfflineException`
 
