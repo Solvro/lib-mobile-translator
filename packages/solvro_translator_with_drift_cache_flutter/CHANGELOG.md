@@ -1,3 +1,6 @@
+## 0.10.0
+- bump drift and drift flutter versions
+
 ## 0.9.4
 - add batch mode docs note
 
