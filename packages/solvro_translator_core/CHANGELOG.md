@@ -1,3 +1,7 @@
+## 0.10.2
+
+- bump `solvro_config` to `^1.7.0`
+
 ## 0.10.1
 - bump solvro config and donwgrade flutter dependency
 

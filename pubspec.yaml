@@ -10,7 +10,7 @@ workspace:
 
 dev_dependencies:
   melos: 7.8.1
-  solvro_config: ^1.6.3
+  solvro_config: ^1.7.0
 
 lint_staged:
   "lib/**.dart": dart format && dart fix --apply
