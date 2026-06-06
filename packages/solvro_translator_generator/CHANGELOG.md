@@ -1,3 +1,12 @@
+## 0.10.0
+
+- bump `analyzer` to `^9.0.0`
+- bump `build` to `^4.0.6` and `source_gen` to `^4.2.3`
+- bump `json_annotation` to `^4.11.0`
+- bump SDK constraint to `^3.11.1`
+- bump `solvro_config` to `^1.5.0`
+- bump `solvro_translator_core` to `^0.10.0`
+
 ## 0.8.0
 
 - **BREAKING**: Updated to `analyzer: ^8.0.0`, `build: ^4.0.3`, `source_gen: ^4.1.0`

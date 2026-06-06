@@ -1,1 +1,7 @@
 include: package:solvro_config/package.yaml
+
+plugins:
+  riverpod_lint:
+    version: ^3.1.3
+    diagnostics:
+      provider_dependencies: false # this works weirdly

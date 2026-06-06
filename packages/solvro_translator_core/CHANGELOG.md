@@ -1,3 +1,8 @@
+## 0.10.0
+
+- bump SDK constraint to `^3.11.1`
+- bump `solvro_config` to `^1.5.0`
+
 ## 0.8.0
 
 - maintenance release

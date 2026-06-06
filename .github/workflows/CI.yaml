@@ -40,6 +40,4 @@ jobs:
       - name: Analyze Flutter packages
         run: melos exec --flutter -- flutter analyze --fatal-infos
 
-      - name: Run custom lints
-        run: melos exec -- dart run custom_lint --fatal-infos
 

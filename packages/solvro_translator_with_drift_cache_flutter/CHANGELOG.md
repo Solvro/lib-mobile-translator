@@ -1,3 +1,13 @@
+## 0.10.0
+
+- bump Flutter SDK constraint to `>=3.44.1`
+- bump SDK constraint to `^3.11.1`
+- bump `solvro_config` to `^1.5.0`
+- bump `solvro_translator_core` to `^0.10.0`
+- bump `drift` / `drift_dev` to `^2.31.0`
+- bump `build_runner` to `^2.15.0`, `freezed` to `^3.2.5`, and `json_serializable` to `^6.13.0`
+- bump `json_annotation` to `^4.11.0`
+
 ## 0.9.4
 - add batch mode docs note
 
