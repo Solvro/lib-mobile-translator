@@ -1,3 +1,6 @@
+## 0.10.1
+- bump solvro config and donwgrade flutter dependency
+
 ## 0.10.0
 
 - bump `analyzer` to `^9.0.0`
