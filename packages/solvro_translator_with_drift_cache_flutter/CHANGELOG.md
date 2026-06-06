@@ -1,3 +1,8 @@
+## 0.11.1-dev
+
+- bump `solvro_config` to `1.8.2-dev.1`
+- bump `solvro_translator_core` to `^0.11.1-dev`
+
 ## 0.11.0-dev
 
 - bump Flutter SDK constraint to `>=3.44.1`
