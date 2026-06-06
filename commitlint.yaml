@@ -6,3 +6,4 @@ rules:
     - - core
       - builder
       - flutter
+      - deps
