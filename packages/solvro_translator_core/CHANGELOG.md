@@ -1,3 +1,9 @@
+## 0.11.0-dev
+
+- bump SDK constraint to `^3.12.0`
+- bump `solvro_config` to `1.8.1-dev.1`
+- bump `crypto` to `^3.0.7`
+
 ## 0.10.2
 
 - bump `solvro_config` to `^1.7.0`

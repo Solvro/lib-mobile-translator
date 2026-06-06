@@ -2,28 +2,26 @@ name: solvro_translator_with_drift_cache_flutter
 description: Solvro Translator client with drift cache
 resolution: workspace
 repository: https://github.com/solvro/lib-mobile-translator
-version: "0.10.2"
+version: "0.11.0-dev"
 
 environment:
-  sdk: ^3.11.1
-  flutter: ">=3.41.4"
+  sdk: ^3.12.0
+  flutter: ">=3.44.1"
 
 dependencies:
   flutter:
     sdk: flutter
-  solvro_translator_core: ^0.10.2
+  solvro_translator_core: ^0.11.0-dev
   freezed_annotation: ^3.1.0
-  json_annotation: ^4.11.0
-  dio: ^5.9.0
-  drift: ^2.31.0
-  drift_flutter: ^0.2.8
+  json_annotation: ^4.12.0
+  dio: ^5.9.2
+  drift: ^2.33.0
+  drift_flutter: ^0.3.0
   path_provider: ^2.1.5
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  solvro_config: ^1.7.0
+  solvro_config: 1.8.1-dev.1
   build_runner: ^2.15.0
   freezed: ^3.2.5
-  json_serializable: ^6.13.0
-  drift_dev: ^2.31.0
+  json_serializable: ^6.14.0
+  drift_dev: ^2.33.0

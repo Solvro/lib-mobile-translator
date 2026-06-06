@@ -1,3 +1,14 @@
+## 0.11.0-dev
+
+- bump Flutter SDK constraint to `>=3.44.1`
+- bump SDK constraint to `^3.12.0`
+- bump `solvro_config` to `1.8.1-dev.1`
+- bump `solvro_translator_core` to `^0.11.0-dev`
+- bump `dio` to `^5.9.2`
+- bump `drift` / `drift_dev` to `^2.33.0`
+- bump `drift_flutter` to `^0.3.0`
+- bump `json_annotation` to `^4.12.0` and `json_serializable` to `^6.14.0`
+
 ## 0.10.2
 
 - bump `solvro_config` to `^1.7.0`

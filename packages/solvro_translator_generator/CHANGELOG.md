@@ -1,3 +1,11 @@
+## 0.11.0-dev
+
+- bump SDK constraint to `^3.12.0`
+- bump `solvro_config` to `1.8.1-dev.1`
+- bump `analyzer` to `^12.0.0`
+- bump `json_annotation` to `^4.12.0`
+- bump `solvro_translator_core` to `^0.11.0-dev`
+
 ## 0.10.2
 
 - bump `solvro_config` to `^1.7.0`
