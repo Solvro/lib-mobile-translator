@@ -17,4 +17,4 @@ dependencies:
   solvro_translator_core: ^0.11.1-dev
 
 dev_dependencies:
-  solvro_config: 1.8.2-dev.1
+  solvro_config: 1.8.4-dev

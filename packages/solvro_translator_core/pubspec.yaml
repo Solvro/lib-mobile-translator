@@ -11,4 +11,4 @@ dependencies:
   crypto: ^3.0.7
 
 dev_dependencies:
-  solvro_config: 1.8.2-dev.1
+  solvro_config: 1.8.4-dev
