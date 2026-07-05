@@ -586,10 +586,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider
-      sha256: "50c5dd5b6e1aaf6fb3a78b33f6aa3afca52bf903a8a5298f53101fdaee55bbcd"
+      sha256: a7f4874f987173da295a61c181b8ee71dab59b332a486b391babf26a1b884825
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.5"
+    version: "2.1.6"
   path_provider_android:
     dependency: transitive
     description:
@@ -730,10 +730,10 @@ packages:
     dependency: transitive
     description:
       name: riverpod
-      sha256: da7233961958420e9d80edf4b7a735d5b6b732fe2381d2a12a388562e2042b3f
+      sha256: "17100416c51db7810c71a7bb2c34d1f881faa0074fd452afb0c4db6f8f126c76"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.2-dev.2"
+    version: "3.3.2"
   riverpod_analyzer_utils:
     dependency: transitive
     description:
@@ -746,10 +746,10 @@ packages:
     dependency: transitive
     description:
       name: riverpod_lint
-      sha256: "4ef15442a9f2254ed6ee59a48db84c2c784580ef804061443861b7e0360ec106"
+      sha256: "166f29492228dc471b6fe294092560ccd5545ed15c9fc155622455b58b2451a9"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.4-dev.3"
+    version: "3.1.4"
   shelf:
     dependency: transitive
     description:
@@ -791,10 +791,10 @@ packages:
     dependency: "direct dev"
     description:
       name: solvro_config
-      sha256: "7a390f66be032546a4374300979f1951dda30800455533d318c55977cc552964"
+      sha256: acdb5708f139a2960e297c5027acaa8e33eb179a4da95ba7aca682f608d4746a
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.2-dev.1"
+    version: "1.9.0"
   source_gen:
     dependency: transitive
     description:
